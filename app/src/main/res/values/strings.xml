@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Aaron_CakeList</string>
+    <string name="no_cakes">There are currently no cakes to display</string>
+    <string name="dismiss">Dismiss</string>
+</resources>

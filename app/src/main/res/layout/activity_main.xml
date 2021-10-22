@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".ui.MainActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+        <variable
+                name="viewModel"
+                type="com.aaron_code.cakelist.ui.MainViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:items="@{viewModel.cakes}"
+                app:itemBinding="@{viewModel.itemBinding}"
+                android:visibility="@{viewModel.atLeastOneCake ? View.VISIBLE : View.GONE}"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@string/no_cakes"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="24sp"
+                android:padding="16dp"
+                android:visibility="@{viewModel.atLeastOneCake ? View.GONE : View.VISIBLE}"/>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/black"
+                android:alpha="0.5"
+                android:visibility="@{viewModel.inProgress ? View.VISIBLE : View.GONE}"/>
+
+        <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:indeterminateTint="@android:color/white"
+                android:visibility="@{viewModel.inProgress ? View.VISIBLE : View.GONE}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
